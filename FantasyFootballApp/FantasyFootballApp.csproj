@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -164,7 +166,43 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Expert.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FFBallAppModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFBallAppModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FFBallAppModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FFBallAppModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFBallAppModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Player.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Position.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ranking.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SkillPlayerStat.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Team.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -177,6 +215,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\FFBallAppModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FFBallAppModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FFBallAppModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FFBallAppModels.edmx</DependentUpon>
+      <LastGenOutput>FFBallAppModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FFBallAppModels.edmx.diagram">
+      <DependentUpon>FFBallAppModels.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\FFBallAppModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FFBallAppModels.edmx</DependentUpon>
+      <LastGenOutput>FFBallAppModels.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -224,6 +279,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
