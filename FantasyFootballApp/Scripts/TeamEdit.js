@@ -16,18 +16,26 @@ $(document).ready(function () {
             },
             TeamName: {
                 title: 'TeamName',
-                width: '35%'
+                width: '20%'
             },
             Abbreviation: {
                 title: 'Abbreviation',
-                width: '15%'
+                width: '10%'
             },
-            City: {
-                title: 'City',
-                width: '30%'
+            FirstName: {
+                title: 'FirstName',
+                width: '25%'
             },
             State: {
                 title: 'State',
+                width: '15%'
+            },
+            Conference: {
+                title: 'Conference',
+                width: '10%'
+            },
+            Division: {
+                title: 'Division',
                 width: '20%'
             }
         }

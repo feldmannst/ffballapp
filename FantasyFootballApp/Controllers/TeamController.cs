@@ -36,8 +36,10 @@ namespace FantasyFootballApp.Controllers
                                       TeamID = t.TeamID,
                                       TeamName = t.TeamName,
                                       Abbreviation = t.Abbreviation,
-                                      City = t.City,
-                                      State = t.State
+                                      FirstName = t.FirstName,
+                                      State = t.State,
+                                      Conference = t.Conference,
+                                      Division = t.Division
                                   })
                     });
             }
@@ -57,8 +59,10 @@ namespace FantasyFootballApp.Controllers
                     TeamID = team.TeamID,
                     TeamName = team.TeamName,
                     Abbreviation = team.Abbreviation,
-                    City = team.City,
-                    State = team.State
+                    FirstName = team.FirstName,
+                    State = team.State,
+                    Conference = team.Conference,
+                    Division = team.Division
                 };
 
                 db.Teams.Add(entry);
@@ -73,8 +77,10 @@ namespace FantasyFootballApp.Controllers
                             TeamID = addedTeam.TeamID,
                             TeamName = addedTeam.TeamName,
                             Abbreviation = addedTeam.Abbreviation,
-                            City = addedTeam.City,
-                            State = addedTeam.State
+                            FirstName = addedTeam.FirstName,
+                            State = addedTeam.State,
+                            Conference = addedTeam.Conference,
+                            Division = addedTeam.Division
                         }
                     });
             }

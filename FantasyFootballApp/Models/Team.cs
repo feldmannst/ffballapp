@@ -22,8 +22,10 @@ namespace FantasyFootballApp.Models
         public byte TeamID { get; set; }
         public string TeamName { get; set; }
         public string Abbreviation { get; set; }
-        public string City { get; set; }
         public string State { get; set; }
+        public string FirstName { get; set; }
+        public string Conference { get; set; }
+        public string Division { get; set; }
     
         public virtual ICollection<Player> Players { get; set; }
     }

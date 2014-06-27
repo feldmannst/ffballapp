@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FFBallDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FFBallDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Expert">
           <Key>
             <PropertyRef Name="ExpertID" />
@@ -83,8 +83,10 @@
           <Property Name="TeamID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TeamName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Abbreviation" Type="varchar" MaxLength="3" Nullable="false" />
-          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Conference" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Division" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_Player_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
@@ -175,8 +177,7 @@
             <End Role="SkillPlayerStat" EntitySet="SkillPlayerStat" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FFBallDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -267,9 +268,11 @@
           <Property Name="TeamID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Abbreviation" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Players" Relationship="Self.FK_Player_Team" FromRole="Team" ToRole="Player" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Conference" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Division" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Ranking_Expert">
           <End Role="Expert" Type="Self.Expert" Multiplicity="1" />
@@ -446,10 +449,12 @@
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="FFBallDatabaseModel.Team">
               <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Conference" ColumnName="Conference" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />
                 <ScalarProperty Name="TeamName" ColumnName="TeamName" />
                 <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
-                <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="State" ColumnName="State" />
               </MappingFragment>
             </EntityTypeMapping>
