@@ -19,9 +19,10 @@
           </Key>
           <Property Name="PlayerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PlayerName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nickname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nickname" Type="varchar" MaxLength="50" />
           <Property Name="PositionID" Type="tinyint" Nullable="false" />
           <Property Name="TeamID" Type="tinyint" Nullable="false" />
+          <Property Name="Retired" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -196,13 +197,14 @@
           </Key>
           <Property Name="PlayerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PlayerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PositionID" Type="Byte" Nullable="false" />
           <Property Name="TeamID" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Position" Relationship="Self.FK_Player_Position" FromRole="Player" ToRole="Position" />
           <NavigationProperty Name="Team" Relationship="Self.FK_Player_Team" FromRole="Player" ToRole="Team" />
           <NavigationProperty Name="Rankings" Relationship="Self.FK_Ranking_Player" FromRole="Player" ToRole="Ranking" />
           <NavigationProperty Name="SkillPlayerStats" Relationship="Self.FK_SkillPlayerStat_Player" FromRole="Player" ToRole="SkillPlayerStat" />
+          <Property Name="Retired" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -381,6 +383,7 @@
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="FFBallDatabaseModel.Player">
               <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="Retired" ColumnName="Retired" />
                 <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
                 <ScalarProperty Name="PlayerName" ColumnName="PlayerName" />
                 <ScalarProperty Name="Nickname" ColumnName="Nickname" />

@@ -25,6 +25,7 @@ namespace FantasyFootballApp.Models
         public string Nickname { get; set; }
         public byte PositionID { get; set; }
         public byte TeamID { get; set; }
+        public bool Retired { get; set; }
     
         public virtual Position Position { get; set; }
         public virtual Team Team { get; set; }
