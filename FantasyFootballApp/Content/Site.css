@@ -45,4 +45,20 @@ input[type="checkbox"].input-validation-error {
     padding-top: 10px;
 }
 
-/* Custom Nav Styles */
+/* Cell Colors by Position */
+
+.cell-rb {
+    background-color: #C9DAF8;
+}
+
+.cell-wr {
+    background-color: #d9ead3;
+}
+
+.cell-te {
+    background-color: #fff2cc;
+}
+
+.cell-qb {
+    background-color: #f4cccc;
+}

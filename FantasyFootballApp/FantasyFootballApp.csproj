@@ -188,6 +188,7 @@
       <DependentUpon>FFBallAppModels.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MainViewModels.cs" />
     <Compile Include="Models\Player.cs">
       <DependentUpon>FFBallAppModels.tt</DependentUpon>
     </Compile>
