@@ -168,6 +168,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditViewModels.cs" />
     <Compile Include="Models\Expert.cs">
       <DependentUpon>FFBallAppModels.tt</DependentUpon>
     </Compile>
@@ -296,7 +297,9 @@
       <DependentUpon>FFBallAppModels.edmx</DependentUpon>
       <LastGenOutput>FFBallAppModels.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\ffballapp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\PlayerEdit.js" />
     <Content Include="Scripts\TeamEdit.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -468,10 +471,10 @@
     <Content Include="Scripts\jtable\themes\jqueryui\jtable_jqueryui.less" />
     <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
     <Content Include="Views\Team\Index.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Player\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
