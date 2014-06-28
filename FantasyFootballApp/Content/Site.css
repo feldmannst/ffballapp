@@ -41,4 +41,8 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+.edit-table {
+    padding-top: 10px;
+}
+
 /* Custom Nav Styles */

@@ -35,8 +35,9 @@ namespace FantasyFootballApp.Controllers
                 if (positiondd != null)
                     players = players.Where(a => a.PositionID == positiondd);
 
-                List<Player> playerlist = players.OrderBy(a => a.PlayerName).Skip(jtStartIndex).Take(jtPageSize).ToList();
-
+                List<Player> filteredPlayers = players.ToList();
+                recordCount = filteredPlayers.Count();
+                List<Player> playerlist = filteredPlayers.OrderBy(a => a.PlayerName).Skip(jtStartIndex).Take(jtPageSize).ToList();
                 return Json(new
                 {
                     Result = "OK",
