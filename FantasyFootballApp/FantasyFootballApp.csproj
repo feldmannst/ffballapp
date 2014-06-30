@@ -163,6 +163,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -211,6 +212,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ajax-loader.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
@@ -301,6 +303,7 @@
     <None Include="Properties\PublishProfiles\ffballapp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\PlayerEdit.js" />
+    <Content Include="Scripts\RankingsUpdate.js" />
     <Content Include="Scripts\TeamEdit.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -473,6 +476,8 @@
     <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
     <Content Include="Views\Team\Index.cshtml" />
     <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\Shared\_RankingTable.cshtml" />
+    <Content Include="Views\Ranking\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

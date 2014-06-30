@@ -5,25 +5,9 @@
 
 
 <div class="row">
+    <h2>Top ESPN Players</h2>
     <div class="col-md-6">
-        <h2>Top ESPN Players</h2>
-        <table class="table table-bordered table-condensed table-hover">
-            <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Position</th>
-                <th>Team</th>
-            </tr>
-            @foreach(var item in Model.TopPlayers)
-            {
-                <tr class="cell-@item.Player.Position.Abbreviation.ToLower()">
-                    <td>@item.Rank</td>
-                    <td>@item.Player.PlayerName</td>
-                    <td>@item.Player.Position.Abbreviation</td>
-                    <td>@item.Player.Team.Abbreviation</td>
-                </tr>
-            }
-        </table>
+        @Html.Partial("_RankingTable", Model.TopPlayers)
     </div>
     <div class="col-md-6">
         <h2>Fantasy Football Ranking App</h2>

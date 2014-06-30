@@ -62,3 +62,25 @@ input[type="checkbox"].input-validation-error {
 .cell-qb {
     background-color: #f4cccc;
 }
+
+.cell-dst {
+    background-color: #f6b26b;
+}
+
+.cell-k {
+    background-color: #8e7cc3;
+}
+
+/* Loading Images and Styles */
+
+.loading-table {
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.loading-gif {
+    background-image: url(ajax-loader.gif);
+    background-repeat: no-repeat;
+    margin: auto;
+    z-index: 1;
+}
