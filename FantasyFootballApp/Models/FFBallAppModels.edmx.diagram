@@ -17,6 +17,8 @@
         <AssociationConnector Association="FFBallDatabaseModel.FK_Player_Team" ManuallyRouted="false" />
         <AssociationConnector Association="FFBallDatabaseModel.FK_Ranking_Player" ManuallyRouted="false" />
         <AssociationConnector Association="FFBallDatabaseModel.FK_SkillPlayerStat_Player" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FFBallDatabaseModel.ExpertPlayer" Width="1.5" PointX="5.25" PointY="12.75" />
+        <AssociationConnector Association="FFBallDatabaseModel.FK_ExpertPlayer_Expert" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

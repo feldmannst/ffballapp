@@ -32,5 +32,6 @@ namespace FantasyFootballApp.Models
         public virtual DbSet<SkillPlayerStat> SkillPlayerStats { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<ExpertPlayer> ExpertPlayers { get; set; }
     }
 }

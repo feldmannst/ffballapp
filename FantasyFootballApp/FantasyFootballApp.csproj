@@ -173,6 +173,9 @@
     <Compile Include="Models\Expert.cs">
       <DependentUpon>FFBallAppModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExpertPlayer.cs">
+      <DependentUpon>FFBallAppModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FFBallAppModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

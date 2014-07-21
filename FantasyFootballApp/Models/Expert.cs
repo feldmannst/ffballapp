@@ -17,6 +17,7 @@ namespace FantasyFootballApp.Models
         public Expert()
         {
             this.Rankings = new HashSet<Ranking>();
+            this.ExpertPlayers = new HashSet<ExpertPlayer>();
         }
     
         public int ExpertID { get; set; }
@@ -24,5 +25,6 @@ namespace FantasyFootballApp.Models
         public string Source { get; set; }
     
         public virtual ICollection<Ranking> Rankings { get; set; }
+        public virtual ICollection<ExpertPlayer> ExpertPlayers { get; set; }
     }
 }

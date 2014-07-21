@@ -18,7 +18,19 @@ namespace FantasyFootballApp.Controllers
             return View(viewModel);
         }
 
-        public PartialViewResult GetExpertRankings(int? expertid, int? positionid)
+        public PartialViewResult DisplayExpertRankings(int? expertid, int? positionid)
+        {
+            var dataSet = GetExpertRankings(expertid, positionid);
+            ViewBag.ExpertName = db.Experts.Find(expertid).ExpertName.ToString();
+            return PartialView("_RankingTable", dataSet);
+        }
+
+        public ActionResult RankingTool()
+        {
+
+        }
+
+        private List<Ranking> GetExpertRankings(int? expertid, int? positionid)
         {
             IQueryable<Ranking> rankings;
 
@@ -34,8 +46,7 @@ namespace FantasyFootballApp.Controllers
 
             var dataSet = rankings.OrderBy(a => a.Rank).ToList();
 
-            ViewBag.ExpertName = db.Experts.Find(expertid).ExpertName.ToString();
-            return PartialView("_RankingTable", dataSet);
+            return dataSet;
         }
 	}
 }

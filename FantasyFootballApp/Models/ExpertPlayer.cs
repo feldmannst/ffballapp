@@ -12,17 +12,13 @@ namespace FantasyFootballApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ranking
+    public partial class ExpertPlayer
     {
-        public int RankingID { get; set; }
-        public int Season { get; set; }
+        public int ExpertPlayerID { get; set; }
         public int ExpertID { get; set; }
-        public int PlayerID { get; set; }
-        public int Rank { get; set; }
-        public Nullable<int> Tier { get; set; }
-        public Nullable<int> RankInPos { get; set; }
+        public string ExpertPlayerName { get; set; }
+        public Nullable<int> PlayerID { get; set; }
     
         public virtual Expert Expert { get; set; }
-        public virtual Player Player { get; set; }
     }
 }

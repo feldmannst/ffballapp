@@ -3,6 +3,7 @@
 <table class="table table-bordered table-condensed table-hover" id="rankingtable">
     <tr>
         <th>Rank</th>
+        <th>RIP</th>
         <th>Player</th>
         <th>Position</th>
         <th>Team</th>
@@ -18,6 +19,7 @@
         {
             <tr class="cell-@item.Player.Position.Abbreviation.ToLower()">
                 <td>@item.Rank</td>
+                <td>@item.RankInPos</td>
                 <td>@item.Player.PlayerName</td>
                 <td>@item.Player.Position.Abbreviation</td>
                 <td>@item.Player.Team.Abbreviation</td>

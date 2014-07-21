@@ -13,6 +13,15 @@
           <Property Name="ExpertName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Source" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="ExpertPlayer">
+          <Key>
+            <PropertyRef Name="ExpertPlayerID" />
+          </Key>
+          <Property Name="ExpertPlayerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpertID" Type="int" Nullable="false" />
+          <Property Name="ExpertPlayerName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlayerID" Type="int" />
+        </EntityType>
         <EntityType Name="Player">
           <Key>
             <PropertyRef Name="PlayerID" />
@@ -41,6 +50,7 @@
           <Property Name="ExpertID" Type="int" Nullable="false" />
           <Property Name="PlayerID" Type="int" Nullable="false" />
           <Property Name="Rank" Type="int" Nullable="false" />
+          <Property Name="RankInPos" Type="int" />
           <Property Name="Tier" Type="int" />
         </EntityType>
         <EntityType Name="SkillPlayerStat">
@@ -89,6 +99,18 @@
           <Property Name="Conference" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="Division" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ExpertPlayer_Expert">
+          <End Role="Expert" Type="Self.Expert" Multiplicity="1" />
+          <End Role="ExpertPlayer" Type="Self.ExpertPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expert">
+              <PropertyRef Name="ExpertID" />
+            </Principal>
+            <Dependent Role="ExpertPlayer">
+              <PropertyRef Name="ExpertID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Player_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
           <End Role="Player" Type="Self.Player" Multiplicity="*" />
@@ -151,12 +173,17 @@
         </Association>
         <EntityContainer Name="FFBallDatabaseModelStoreContainer">
           <EntitySet Name="Expert" EntityType="Self.Expert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpertPlayer" EntityType="Self.ExpertPlayer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ranking" EntityType="Self.Ranking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SkillPlayerStat" EntityType="Self.SkillPlayerStat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ExpertPlayer_Expert" Association="Self.FK_ExpertPlayer_Expert">
+            <End Role="Expert" EntitySet="Expert" />
+            <End Role="ExpertPlayer" EntitySet="ExpertPlayer" />
+          </AssociationSet>
           <AssociationSet Name="FK_Player_Position" Association="Self.FK_Player_Position">
             <End Role="Position" EntitySet="Position" />
             <End Role="Player" EntitySet="Player" />
@@ -190,6 +217,7 @@
           <Property Name="ExpertName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Rankings" Relationship="Self.FK_Ranking_Expert" FromRole="Expert" ToRole="Ranking" />
+          <NavigationProperty Name="ExpertPlayers" Relationship="FFBallDatabaseModel.FK_ExpertPlayer_Expert" FromRole="Expert" ToRole="ExpertPlayer" />
         </EntityType>
         <EntityType Name="Player">
           <Key>
@@ -227,6 +255,7 @@
           <Property Name="Tier" Type="Int32" />
           <NavigationProperty Name="Expert" Relationship="Self.FK_Ranking_Expert" FromRole="Ranking" ToRole="Expert" />
           <NavigationProperty Name="Player" Relationship="Self.FK_Ranking_Player" FromRole="Ranking" ToRole="Player" />
+          <Property Name="RankInPos" Type="Int32" />
         </EntityType>
         <EntityType Name="SkillPlayerStat">
           <Key>
@@ -364,7 +393,34 @@
             <End Role="Player" EntitySet="Players" />
             <End Role="SkillPlayerStat" EntitySet="SkillPlayerStats" />
           </AssociationSet>
+          <EntitySet Name="ExpertPlayers" EntityType="FFBallDatabaseModel.ExpertPlayer" />
+          <AssociationSet Name="FK_ExpertPlayer_Expert" Association="FFBallDatabaseModel.FK_ExpertPlayer_Expert">
+            <End Role="Expert" EntitySet="Experts" />
+            <End Role="ExpertPlayer" EntitySet="ExpertPlayers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ExpertPlayer">
+          <Key>
+            <PropertyRef Name="ExpertPlayerID" />
+          </Key>
+          <Property Name="ExpertPlayerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpertID" Type="Int32" Nullable="false" />
+          <Property Name="ExpertPlayerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PlayerID" Type="Int32" />
+          <NavigationProperty Name="Expert" Relationship="FFBallDatabaseModel.FK_ExpertPlayer_Expert" FromRole="ExpertPlayer" ToRole="Expert" />
+        </EntityType>
+        <Association Name="FK_ExpertPlayer_Expert">
+          <End Type="FFBallDatabaseModel.Expert" Role="Expert" Multiplicity="1" />
+          <End Type="FFBallDatabaseModel.ExpertPlayer" Role="ExpertPlayer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expert">
+              <PropertyRef Name="ExpertID" />
+            </Principal>
+            <Dependent Role="ExpertPlayer">
+              <PropertyRef Name="ExpertID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -404,6 +460,7 @@
           <EntitySetMapping Name="Rankings">
             <EntityTypeMapping TypeName="FFBallDatabaseModel.Ranking">
               <MappingFragment StoreEntitySet="Ranking">
+                <ScalarProperty Name="RankInPos" ColumnName="RankInPos" />
                 <ScalarProperty Name="RankingID" ColumnName="RankingID" />
                 <ScalarProperty Name="Season" ColumnName="Season" />
                 <ScalarProperty Name="ExpertID" ColumnName="ExpertID" />
@@ -459,6 +516,16 @@
                 <ScalarProperty Name="TeamName" ColumnName="TeamName" />
                 <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
                 <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpertPlayers">
+            <EntityTypeMapping TypeName="FFBallDatabaseModel.ExpertPlayer">
+              <MappingFragment StoreEntitySet="ExpertPlayer">
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="ExpertPlayerName" ColumnName="ExpertPlayerName" />
+                <ScalarProperty Name="ExpertID" ColumnName="ExpertID" />
+                <ScalarProperty Name="ExpertPlayerID" ColumnName="ExpertPlayerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

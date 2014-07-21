@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Rankings";
 }
-
+<br />
 <div class="row">
     @using (Html.BeginForm("", "", FormMethod.Get, new { @id="rankingupdateform", @class="form-inline"}))
     {
@@ -22,7 +22,7 @@
 
 <div class="row">
     <div id="rankingssection">
-        @Html.Action("GetExpertRankings", "Ranking")
+        @Html.Action("DisplayExpertRankings", "Ranking")
     </div>
 </div>
 
