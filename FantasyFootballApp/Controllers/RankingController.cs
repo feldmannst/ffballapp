@@ -25,11 +25,6 @@ namespace FantasyFootballApp.Controllers
             return PartialView("_RankingTable", dataSet);
         }
 
-        public ActionResult RankingTool()
-        {
-
-        }
-
         private List<Ranking> GetExpertRankings(int? expertid, int? positionid)
         {
             IQueryable<Ranking> rankings;
