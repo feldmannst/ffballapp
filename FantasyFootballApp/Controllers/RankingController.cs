@@ -18,8 +18,11 @@ namespace FantasyFootballApp.Controllers
             return View(viewModel);
         }
 
-        public PartialViewResult DisplayExpertRankings(int? expertid, int? positionid)
+        public PartialViewResult DisplayExpertRankings(int? expertid, int positionid = 0)
         {
+            if (expertid == null)
+                expertid = 5;
+
             var dataSet = GetExpertRankings(expertid, positionid);
             ViewBag.ExpertName = db.Experts.Find(expertid).ExpertName.ToString();
             return PartialView("_RankingTable", dataSet);
@@ -29,12 +32,9 @@ namespace FantasyFootballApp.Controllers
         {
             IQueryable<Ranking> rankings;
 
-            if (expertid == null)
-                expertid = 5;
-
             rankings = db.Rankings.Where(a => a.ExpertID == expertid);
 
-            if (positionid != null)
+            if (positionid != 0)
             {
                 rankings = rankings.Where(a => a.Player.Position.PositionID == positionid);
             }
