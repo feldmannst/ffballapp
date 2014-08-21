@@ -22,8 +22,6 @@
     });
 });
 
-$(document).ready(function () {
-    $('#rankingtable tr').click(function () {
-        $(this).toggleClass();
-    })
-})
+$(document).on('click', '#rankingtable tr', function () {
+    $(this).toggleClass();
+});
