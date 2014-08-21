@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FantasyFootballApp.Models.Ranking>
+
+@{
+    ViewBag.Title = "RankingTool";
+}
+
+<h2>Ranking Tool</h2>
+<div class="row">
+    <div class="col-lg-6">
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-default" id="saveRanks">Save</button> 
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <ul id="playerList" class="connectedSortable sortable">
+            @foreach (var item in Model)
+            {
+                <li class="cell-@item.Player.Position.Abbreviation.ToLower()" id="@item.PlayerID">
+                    @item.Rank - @item.Player.PlayerName (@item.Player.Position.Abbreviation)
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <ul id="personalRank" class="connectedSortable sortable">
+        </ul>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.4.js")
+    @Scripts.Render("~/Scripts/RankingTool.js")
+}

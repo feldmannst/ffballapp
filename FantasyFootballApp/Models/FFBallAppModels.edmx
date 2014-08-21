@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FFBallDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FFBallDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Expert">
           <Key>
             <PropertyRef Name="ExpertID" />
@@ -171,6 +171,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="uspUpdateAverageRankings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SeasonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspUpdateRankInPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExpertIDRanksToUpdate" Type="int" Mode="In" />
+          <Parameter Name="SeasonToUpdate" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspUpdateUserRankings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserExpertIDtoUpdate" Type="int" Mode="In" />
+          <Parameter Name="SeasonToUpdate" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="FFBallDatabaseModelStoreContainer">
           <EntitySet Name="Expert" EntityType="Self.Expert" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExpertPlayer" EntityType="Self.ExpertPlayer" Schema="dbo" store:Type="Tables" />
@@ -398,6 +409,17 @@
             <End Role="Expert" EntitySet="Experts" />
             <End Role="ExpertPlayer" EntitySet="ExpertPlayers" />
           </AssociationSet>
+          <FunctionImport Name="uspUpdateAverageRankings">
+          <Parameter Name="SeasonID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspUpdateRankInPosition">
+            <Parameter Name="ExpertIDRanksToUpdate" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonToUpdate" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspUpdateUserRankings">
+            <Parameter Name="UserExpertIDtoUpdate" Mode="In" Type="Int32" />
+            <Parameter Name="SeasonToUpdate" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="ExpertPlayer">
           <Key>
@@ -529,6 +551,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspUpdateAverageRankings" FunctionName="FFBallDatabaseModel.Store.uspUpdateAverageRankings" />
+          <FunctionImportMapping FunctionImportName="uspUpdateRankInPosition" FunctionName="FFBallDatabaseModel.Store.uspUpdateRankInPosition" />
+          <FunctionImportMapping FunctionImportName="uspUpdateUserRankings" FunctionName="FFBallDatabaseModel.Store.uspUpdateUserRankings" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -84,3 +84,25 @@ input[type="checkbox"].input-validation-error {
     margin: auto;
     z-index: 1;
 }
+
+.sortable {
+    border: 1px solid #eee;
+    width: 100%;
+    min-height: 200px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;
+    float: left;
+    margin-right: 10px;
+ }
+
+.sortable li {
+    margin: 0 5px 5px 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    max-width: 95%;
+ }
+
+.inactiveRank {
+    opacity: .5;
+}

@@ -12,6 +12,8 @@ namespace FantasyFootballApp.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class FFBallDatabaseEntities : DbContext
     {
@@ -33,5 +35,40 @@ namespace FantasyFootballApp.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<ExpertPlayer> ExpertPlayers { get; set; }
+    
+        public virtual int uspUpdateAverageRankings(Nullable<int> seasonID)
+        {
+            var seasonIDParameter = seasonID.HasValue ?
+                new ObjectParameter("SeasonID", seasonID) :
+                new ObjectParameter("SeasonID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspUpdateAverageRankings", seasonIDParameter);
+        }
+    
+        public virtual int uspUpdateRankInPosition(Nullable<int> expertIDRanksToUpdate, Nullable<int> seasonToUpdate)
+        {
+            var expertIDRanksToUpdateParameter = expertIDRanksToUpdate.HasValue ?
+                new ObjectParameter("ExpertIDRanksToUpdate", expertIDRanksToUpdate) :
+                new ObjectParameter("ExpertIDRanksToUpdate", typeof(int));
+    
+            var seasonToUpdateParameter = seasonToUpdate.HasValue ?
+                new ObjectParameter("SeasonToUpdate", seasonToUpdate) :
+                new ObjectParameter("SeasonToUpdate", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspUpdateRankInPosition", expertIDRanksToUpdateParameter, seasonToUpdateParameter);
+        }
+    
+        public virtual int uspUpdateUserRankings(Nullable<int> userExpertIDtoUpdate, Nullable<int> seasonToUpdate)
+        {
+            var userExpertIDtoUpdateParameter = userExpertIDtoUpdate.HasValue ?
+                new ObjectParameter("UserExpertIDtoUpdate", userExpertIDtoUpdate) :
+                new ObjectParameter("UserExpertIDtoUpdate", typeof(int));
+    
+            var seasonToUpdateParameter = seasonToUpdate.HasValue ?
+                new ObjectParameter("SeasonToUpdate", seasonToUpdate) :
+                new ObjectParameter("SeasonToUpdate", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspUpdateUserRankings", userExpertIDtoUpdateParameter, seasonToUpdateParameter);
+        }
     }
 }

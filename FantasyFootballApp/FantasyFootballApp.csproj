@@ -307,6 +307,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\PlayerEdit.js" />
     <Content Include="Scripts\RankingsUpdate.js" />
+    <Content Include="Scripts\RankingTool.js" />
     <Content Include="Scripts\TeamEdit.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -481,6 +482,7 @@
     <Content Include="Views\Player\Index.cshtml" />
     <Content Include="Views\Shared\_RankingTable.cshtml" />
     <Content Include="Views\Ranking\Index.cshtml" />
+    <Content Include="Views\Ranking\RankingTool.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

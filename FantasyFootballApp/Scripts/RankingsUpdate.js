@@ -21,3 +21,9 @@
         });
     });
 });
+
+$(document).ready(function () {
+    $('#rankingtable tr').click(function () {
+        $(this).toggleClass();
+    })
+})
